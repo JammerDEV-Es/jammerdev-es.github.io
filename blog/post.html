@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  <div class="wrap" id="root">Cargando...</div>
+  <div class="wrap" id="root">Loading...</div>
 
   <script>
     function qs(name){ const u=new URLSearchParams(window.location.search); return u.get(name); }
@@ -26,7 +26,7 @@
     (async function(){
       const id = qs('id');
       try{
-        // posts.json está en el mismo directorio que este archivo
+        // posts.json
         const res = await fetch('./posts.json');
         if(!res.ok) throw new Error('HTTP ' + res.status);
         const posts = await res.json();
