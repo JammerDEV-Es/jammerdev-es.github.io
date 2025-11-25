@@ -1195,17 +1195,10 @@
         </div>
     </section>
 
-    <!-- Blog (now rendered from code in the left sidebar) -->
-    <section id="blog">
-        <div class="container">
-            <h2>Blog / Updates</h2>
-            <p style="color:var(--text-muted);">Las entradas ahora aparecen en el panel lateral izquierdo. Edita la constante <code style="color:var(--accent);">BLOG_POSTS</code> en <code>page.html</code> para añadir o modificar entradas.</p>
-        </div>
-    </section>
-
+    <!-- Blog (rendered from code in the left sidebar) -->
+        
     <script>
         (function(){
-            // Ahora leemos las entradas desde un archivo JSON estático: blog/posts.json
             const POSTS_URL = 'blog/posts.json';
 
             function formatDate(d){
@@ -1291,7 +1284,7 @@
     </footer>
 
     <script>
-        // Scroll suave
+       
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 // If the link points to the blog anchor, open the blog overview in a new tab instead
@@ -1339,7 +1332,7 @@
         }
 
 
-        // Animación de entrada
+   
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
