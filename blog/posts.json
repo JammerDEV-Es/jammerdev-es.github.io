@@ -3,7 +3,7 @@
     "id": "p_20251124_0001",
     "date": "2025-11-24",
     "title": "Thinking about eJPT",
-    "content": "I've been thinking about getting the eJPT (eLearnSecurity Junior Penetration Tester) certification to build a solid foundation in cybersecurity. At 16 years old, I feel this is a great step in my learning journey and knowledge, in this field. \n \n  The reason I’m considering the eJPT is that it offers a hands-on approach, meaning I won’t just learn theory I’ll be able to apply it in real labs. \n \n  This is crucial for developing skills that are actually used in the professional world, like penetration testing, vulnerability analysis, and troubleshooting security issues. \n \n As a starter license for €249, I think it's pretty good. And I don't think it will be too difficult for me to get this certification. I've done many labs from HTB, THM, and Vulnhub, so I won't have any problems. I've been doing this for a long time, this certification for me is just a way to stand out from the others who are new.",
+    "content": "I've been thinking about getting the eJPT (eLearnSecurity Junior Penetration Tester) certification to build a solid foundation in cybersecurity. At 16 years old, I feel this is a great step in my learning journey and knowledge, in this field.\n\nThe reason I’m considering the eJPT is that it offers a hands-on approach, meaning I won’t just learn theory I’ll be able to apply it in real labs.\n\nThis is crucial for developing skills that are actually used in the professional world, like penetration testing, vulnerability analysis, and troubleshooting security issues.\n\nAs a starter license for €249, I think it's pretty good. And I don't think it will be too difficult for me to get this certification. I've done many labs from HTB, THM, and Vulnhub, so I won't have any problems. I've been doing this for a long time, this certification for me is just a way to stand out from the others who are new.",
     "attachment": null
   },
   {
@@ -13,25 +13,25 @@
     "content": "Finally, after hours of researching the eJPT, I've purchased the $149 USD annual INE subscription, which includes both the eJPT and the ICCA. Once I'm as informed as possible, I'll start using the course voucher and begin the three month countdown. I need to find a date that doesn't conflict with multiple things at my school, so I'll have to look into that now. I need to gather information and manage my time between my studies from now on.",
     "attachment": null
   },
- {
+  {
     "id": "p_20251130_0030",
     "date": "2025-11-30",
     "title": "I started the ICCA",
-    "content": "I've started the ICCA voucher, since it's only 16 hours of coursework, divided into several sections \n\n One of 9 hours and 49 minutes covering cloud foundations, then another of 1 hour and 51 minutes on Cloud Management Concepts, and finally Fundamentals of Cloud Identity, Security, and Compliance, which is 4 hours and 38 minutes. \n\n This is the ICCA course itself. It's not my top priority, but if it fits within the annual plan I purchased, I'm willing to do it.",
+    "content": "I've started the ICCA voucher, since it's only 16 hours of coursework, divided into several sections.\n\nOne of 9 hours and 49 minutes covering cloud foundations, then another of 1 hour and 51 minutes on Cloud Management Concepts, and finally Fundamentals of Cloud Identity, Security, and Compliance, which is 4 hours and 38 minutes.\n\nThis is the ICCA course itself. It's not my top priority, but if it fits within the annual plan I purchased, I'm willing to do it.",
     "attachment": null
   },
-   {
+  {
     "id": "p_20251204_1340",
     "date": "2025-12-04",
     "title": "I've made the first 9 hours of ICCA",
     "content": "I've already completed the first part of the course, the first 9 hours. I understand everything in this section, so it's time to move on to the next one. In this section, I've done labs on AWS, Azure, and GCP. Since it's a GUI, it's not difficult for me to remember everything I need to know. So, as I said before, it's time to move on to the next section.",
-    "attachment": null,
+    "attachment": null
   },
-   {
+  {
     "id": "p_20251210_0001",
     "date": "2025-12-10",
     "title": "Completed ICCA sections",
-    "content": "I've already completed all the ICCA Certificate labs, I just have the exam left. I'll review the material one more time and take the exam when I find a good date. \n \n That's the reason for my short, prolonged absence these days, and for having few commits.",
-    "attachment": null,
+    "content": "I've already completed all the ICCA Certificate labs, I just have the exam left. I'll review the material one more time and take the exam when I find a good date.\n\nThat's the reason for my short, prolonged absence these days, and for having few commits.",
+    "attachment": null
   }
 ]
