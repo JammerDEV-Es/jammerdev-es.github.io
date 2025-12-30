@@ -1104,16 +1104,16 @@
             <div class="projects-grid">
                 <!-- Default-bashrc-for-Linux -->
                 <div class="project-card">
-                    <h3>Default-bashrc-for-Linux</h3>
+                    <h3>HackTheBox Machines</h3>
                     <p class="date">Public</p>
-                    <p>Configurations and instructions to customize the terminal prompt (PS1) and restore defaults. Useful for customizing Linux shells.</p>
+                    <p>Just talking about HTB machines.</p>
                     <div class="project-tags">
                         <span class="tag">Bash</span>
                         <span class="tag">Shell</span>
                         <span class="tag">Config</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/JammerDEV-Es/Default-bashrc-for-Linux" target="_blank">GitHub</a>
+                        <a href="https://github.com/JammerDEV-Es/HackTheBox-ReviewAndWriteup/tree/main/" target="_blank">GitHub</a>
                     </div>
                 </div>
 
@@ -1131,39 +1131,9 @@
                         <a href="https://github.com/JammerDEV-Es/TryHackMe" target="_blank">GitHub</a>
                     </div>
                 </div>
-
-                <!-- page -->
-                <div class="project-card">
-                    <h3>page</h3>
-                    <p class="date">Public</p>
-                    <p>Personal project used as a static site or a portfolio page — simple HTML/CSS site to showcase projects.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JammerDEV-Es/page" target="_blank">GitHub</a>
-                    </div>
-                </div>
-
-                <!-- JammerDev-Es repo -->
-                <div class="project-card">
-                    <h3>JammerDev-Es</h3>
-                    <p class="date">Public</p>
-                    <p>Repository that holds profile-related content, README and links to other projects and resources.</p>
-                    <div class="project-tags">
-                        <span class="tag">README</span>
-                        <span class="tag">Docs</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JammerDEV-Es/JammerDev-Es" target="_blank">GitHub</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
-    <!-- Blog (rendered from code in the left sidebar) -->
         
     <script>
         (function(){
@@ -1245,7 +1215,7 @@
         <div class="container">
             <div class="social-links">
                 <a href="https://github.com/JammerDEV-Es" target="_blank">GitHub</a>
-                <a href="iwilldontshowmyemail@evenifitsnotmyrealone.me">Email</a>
+                <a href="iwilldontshowmyemail@loveyou.me">Email</a>
             </div>
             <p class="footer-text">© 2025 JammerDev Project blog</p>
         </div>
@@ -1285,7 +1255,7 @@
         const blogHeading = document.querySelector('#blog h2');
         if(blogHeading){
             blogHeading.style.cursor = 'pointer';
-            blogHeading.title = 'Abrir blog en nueva pestaña';
+            blogHeading.title = 'Open blog on a new window.';
             blogHeading.addEventListener('click', function(){
                 try{ openBlogOverviewInTab(); }catch(e){ console.error(e); }
             });
@@ -1296,7 +1266,7 @@
             // Prefer opening the folder (index.html). If running through file:// this will open the file path
             const url = 'blog/';
             const win = window.open(url, '_blank');
-            if(!win) alert('No se pudo abrir la pestaña (bloqueador de pop-ups).');
+            if(!win) alert("Can't load the page.");
         }
 
 
