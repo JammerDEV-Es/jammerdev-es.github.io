@@ -33,5 +33,12 @@
     "title": "Completed ICCA sections",
     "content": "I've already completed all the ICCA Certificate labs, I just have the exam left. I'll review the material one more time and take the exam when I find a good date.\n\nThat's the reason for my short, prolonged absence these days, and for having few commits.",
     "attachment": null
+  },
+   {
+    "id": "p_20251230_0301",
+    "date": "2025-12-30",
+    "title": "2026 imminent...",
+    "content": "Even though it says I made the first commit that day, it doesn't mean I started with penetration testing that day or weeks before.\n\nI actually started when I was 13, focusing more on Wi-Fi audits and networks. I began doing local labs with a TP-Link WPA2 router to obtain its handshake. Everyone has to start somewhere, but I've returned to this more seriously, and I plan to start 2026 off strong. Projects will be released, and I won't leave this. \n\nIn May I'll begin studying the 200-hour eJPT course, and once I finish it, I'll move on to another certification. I don't know yet if it will be through the INE platform or CompTIA, but I'll keep going.",
+    "attachment": null
   }
 ]
