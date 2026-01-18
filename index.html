@@ -44,8 +44,8 @@
             --primary: #060404;                                                                                                                                              
             --secondary: #252526;
             --tertiary: #2d2d30;
-            --accent: #b46114;
-            --accent-light: #b97c20;
+            --accent: #b87c21;
+            --accent-light: #b87c21;
             --text-light: #e1e4e8;
             --text-muted: #858585;
             --border: #3e3e42;
@@ -76,7 +76,7 @@
             z-index: -1;
         }
 
-        /* Navegación */
+        /* Navigation */
         nav {
             background: rgba(30, 30, 30, 0.98);
             backdrop-filter: blur(10px);
@@ -166,7 +166,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 4.2vw + 0.8rem, 3.5rem);
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--accent-light), var(--accent));
             -webkit-background-clip: text;
@@ -258,14 +258,14 @@
             background: rgba(93, 162, 14, 0.2);
         }
 
-        /* Secciones */
+        /* Sections */
         section {
             padding: 4rem 2rem;
             border-top: 1px solid var(--border);
         }
 
         section h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.6rem, 2.5vw + 0.6rem, 2.5rem);
             margin-bottom: 3rem;
             color: var(--accent-light);
             position: relative;
@@ -285,7 +285,7 @@
         /* Grid Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -355,7 +355,7 @@
             padding: 0.3rem 0.8rem;
             border-radius: 9999px;
             font-size: 0.85rem;
-            border: 1px solid rgba(202, 131, 8, 0.4);
+            border: 1px solid rgba(184, 124, 33, 0.4);
             transition: all 0.3s ease;
         }
 
@@ -399,7 +399,7 @@
         /* Blog Section - Crack Me */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -596,7 +596,7 @@
             color: var(--text-muted);
         }
 
-        /* Animaciones */
+        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -726,7 +726,7 @@
         }
 
         .modal-body code {
-            background: rgba(186, 104, 17, 0.1);
+            background: rgba(184, 124, 33, 0.1);
             padding: 0.2rem 0.5rem;
             border-radius: 0.25rem;
             color: var(--accent);
@@ -742,7 +742,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Scroll personalizado para modal */
+        /* Custom modal scrollbar */
         .modal-content::-webkit-scrollbar {
             width: 8px;
         }
@@ -943,57 +943,159 @@
         }
     </style>
     <style>
-        /* Left sidebar blog styles (editable posts via JS array) */
+        /* Global scrollbar (discrete, matches dark background) */
+        html, body, * {
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: rgba(0,0,0,0.35) transparent; /* obsidian/black subtle */
+        }
+        /* WebKit-based browsers */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.35); /* obsidian */
+            border-radius: 8px;
+            border: 2px solid transparent; /* inset effect */
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.5); }
+        ::-webkit-scrollbar-corner { background: transparent; }
+
+        /* Left sidebar blog styles (professional blog sidebar) */
         .left-sidebar {
             position: fixed;
             left: 0;
             top: 72px;
             bottom: 0;
-            width: 320px;
-            background: var(--tertiary);
+            width: clamp(260px, 30vw, 360px);
+            background: linear-gradient(180deg, rgba(45,45,48,0.9), rgba(30,30,30,0.95));
             border-right: 1px solid var(--border);
-            padding: 1rem;
+            padding: 1rem 1rem 1.2rem;
             overflow: auto;
             z-index: 1100;
+        }
+
+        .left-sidebar::-webkit-scrollbar { width: 10px; }
+                
+        .sidebar-header {
+            position: sticky;
+            top: 0;
+            background: inherit;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.6rem;
+            z-index: 1;
+            border-bottom: 1px solid var(--border);
         }
 
         .left-sidebar h3 {
             margin: 0 0 0.6rem 0;
             color: var(--accent-light);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            letter-spacing: 0.3px;
         }
 
-        .left-sidebar .entry {
-            background: rgba(45,45,48,0.6);
+        .sidebar-search { position: relative; }
+        .sidebar-search input {
+            width: 100%;
+            background: rgba(0,0,0,0.25);
             border: 1px solid var(--border);
-            padding: 0.8rem;
-            border-radius: 8px;
-            margin-bottom: 0.8rem;
-        }
-
-        .left-sidebar .entry .date {
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .left-sidebar .entry .title {
             color: var(--text-light);
-            font-weight: 700;
-            margin-bottom: 0.4rem;
+            padding: 0.65rem 0.9rem;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .sidebar-search input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(184,124,33,0.15);
         }
 
-        .left-sidebar .entry .snippet {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.4;
-            max-height: 4.2rem;
-            overflow: hidden;
+        .sidebar-widget {
+            background: rgba(45,45,48,0.55);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.9rem;
+            margin-bottom: 0.9rem;
         }
 
-        .content-with-sidebar {
-            margin-left: 340px; /* leave space for sidebar */
+        .widget-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 0.4rem;
         }
+        .widget-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 14px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        .post-list { display: flex; flex-direction: column; gap: 0.55rem; }
+        .post-item {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 0.6rem;
+            padding: 0.55rem;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background: rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .post-item:hover { transform: translateY(-2px); border-color: var(--accent); background: rgba(0,0,0,0.18); }
+        .post-thumb {
+            width: 48px; height: 48px; border-radius: 8px;
+            background: linear-gradient(135deg, rgba(184,124,33,0.25), rgba(184,124,33,0.05));
+            border: 1px solid var(--border);
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; line-height: 1.05; color: var(--accent-light); font-weight: 800;
+            text-align: center; padding: 2px;
+        }
+        .post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        /* macOS Dock-like tap bounce for navigation */
+        @keyframes dockTapBounce {
+            0%   { transform: translateY(0) scale(1); }
+            30%  { transform: translateY(-10px) scale(1.03); }
+            60%  { transform: translateY(5px)  scale(0.995); }
+            100% { transform: translateY(0)   scale(1); }
+        }
+        .post-item.tap-bounce, .post-thumb.tap-bounce {
+            animation: dockTapBounce 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center bottom;
+        }
+        .post-title { font-weight: 700; color: var(--text-light); font-size: 0.95rem; line-height: 1.2; margin: 0 0 0.15rem 0; }
+        .post-meta { font-size: 0.78rem; color: var(--text-muted); }
+        .post-snippet { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; max-height: 2.8rem; overflow: hidden; }
+
+        .category-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+        .category-list .cat-item {
+            display: flex; align-items: center; justify-content: space-between; gap: 0.4rem;
+            padding: 0.45rem 0.6rem; border-radius: 8px; background: rgba(0,0,0,0.12);
+            border: 1px solid transparent; cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+        }
+        .category-list .cat-item:hover { border-color: var(--accent); transform: translateX(2px); background: rgba(0,0,0,0.18); }
+        .category-list .cat-name { color: var(--text-light); font-size: 0.92rem; }
+        .badge { background: rgba(184,124,33,0.18); color: var(--accent-light); border: 1px solid rgba(184,124,33,0.35); font-weight: 700; font-size: 0.75rem; padding: 0.1rem 0.45rem; border-radius: 999px; }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tag { background: rgba(184,124,33,0.12); color: var(--accent-light); border: 1px solid rgba(184,124,33,0.35); padding: 0.25rem 0.55rem; border-radius: 999px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+        .tag:hover { transform: translateY(-2px); background: rgba(184,124,33,0.2); border-color: var(--accent); }
+
+        
+        .sidebar-footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; opacity: 0.8; margin-top: 0.4rem; }
+
+        .content-with-sidebar { margin-left: calc(clamp(260px, 30vw, 360px) + 20px); }
 
         @media (max-width: 900px) {
             .left-sidebar {
@@ -1002,15 +1104,29 @@
                 height: auto;
                 border-right: none;
                 margin-bottom: 1rem;
+                padding: 0.8rem;
             }
-            .content-with-sidebar {
-                margin-left: 0;
-            }
+            .content-with-sidebar { margin-left: 0; }
+            .sidebar-header { position: static; border-bottom: none; }
         }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      /* Force hide scrollbars globally with highest precedence */
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar,
+      .left-sidebar::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+      }
+      body {
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE y Edge */
+      }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
+    <!-- Navigation -->
     <nav>
         <div class="container">
             <div class="logo-wrapper">
@@ -1025,7 +1141,7 @@
                         </div>
                     </div>
                     <div style="border-top:1px solid var(--border); margin-top:6px; padding-top:6px;">
-                        <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Repos populares</div>
+                        <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Popular Repositories</div>
                         <div style="display:flex; flex-direction:column; gap:6px;">
                             <a href="https://github.com/JammerDEV-Es/HackTheBox-ReviewAndWriteup/tree/main/" class="pm-btn" style="text-align:left; padding:0.35rem 0.5rem;">HackTheBox Machines</a>
                             <a href="https://github.com/JammerDEV-Es/TryHackMe" class="pm-btn" style="text-align:left; padding:0.35rem 0.5rem;">TryHackMe (notes)</a>
@@ -1046,12 +1162,36 @@
     
     <!-- Left sidebar blog (posts are defined in the code below) -->
     <aside class="left-sidebar" id="leftBlog">
-        <h3>Blog / Updates</h3>
-        <div id="leftBlogEntries">
-            <!-- Entries rendered from the BLOG_POSTS array in the code -->
+        <div class="sidebar-header">
+            <h3>Blog / Updates</h3>
+            <div class="sidebar-search">
+                <input id="blogSearch" type="search" placeholder="Search the blog..." aria-label="Search">
+            </div>
         </div>
-        <div style="font-size:0.82rem; color:var(--text-muted); margin-top:0.6rem;">
-             <code style="color:var(--accent);">BLOG_POSTS</code> en <code>page.html</code>.
+
+        <div class="sidebar-widget">
+            <div class="widget-title">Recent</div>
+            <div id="leftBlogEntries" class="post-list"></div>
+        </div>
+
+        <div class="sidebar-widget" id="popularWidget" hidden>
+            <div class="widget-title">Popular</div>
+            <div id="sidebarPopular" class="post-list"></div>
+        </div>
+
+        <div class="sidebar-widget" id="categoriesWidget" hidden>
+            <div class="widget-title">Categories</div>
+            <ul id="sidebarCategories" class="category-list"></ul>
+        </div>
+
+        <div class="sidebar-widget" id="tagsWidget" hidden>
+            <div class="widget-title">Tags</div>
+            <div id="sidebarTags" class="tag-cloud"></div>
+        </div>
+
+        
+        <div class="sidebar-footer">
+            <small class="muted">Data source: blog/posts.json</small>
         </div>
     </aside>
 
@@ -1061,7 +1201,7 @@
     <section class="hero">
         <div class="container">
             <h1>Hello mate, this is my blog</h1>
-            <p class="subtitle">This will be my blog page, where I'll post the things I'm doing to keep a record of my process. I'll be adding things to the page regularly.</p>
+            <p class="subtitle">This is my blog, where I post what I am working on to track my progress. I will add updates regularly.</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
                 <a href="#blog" class="btn btn-secondary">Read Updates</a>
@@ -1105,7 +1245,7 @@
                 <div class="project-card">
                     <h3>HackTheBox Machines</h3>
                     <p class="date">Public</p>
-                    <p>Just talking about HTB machines.</p>
+                    <p>Talking about Hack The Box machines.</p>
                     <div class="project-tags">
                         <span class="tag">Bash</span>
                         <span class="tag">Shell</span>
@@ -1120,7 +1260,7 @@
                 <div class="project-card">
                     <h3>TryHackMe</h3>
                     <p class="date">Public</p>
-                    <p>Notes, writeups and solutions from TryHackMe exercises. Collection of labs covering various cybersecurity topics.</p>
+                    <p>Notes, write-ups and solutions from TryHackMe exercises. A collection of labs covering various cybersecurity topics.</p>
                     <div class="project-tags">
                         <span class="tag">Security</span>
                         <span class="tag">Writeups</span>
@@ -1137,16 +1277,23 @@
     <script>
         (function(){
             const POSTS_URL = 'blog/posts.json';
+            const state = { posts: [], filtered: [], activeFilter: null, activeTag: null, search: '' };
 
             function formatDate(d){
                 const dt = new Date(d);
                 return dt.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
             }
+            function compactDate(d){
+                const dt = new Date(d);
+                const dd = (`0${dt.getDate()}`).slice(-2);
+                const mo = dt.toLocaleDateString(undefined, { month: 'short' }).replace('.','');
+                return `${dd}\n${mo}`; // two lines day + month
+            }
 
             async function loadPosts(){
                 try{
                     const res = await fetch(POSTS_URL);
-                    if(!res.ok) throw new Error('No se pudo cargar posts');
+                    if(!res.ok) throw new Error('Failed to load posts');
                     return await res.json();
                 }catch(e){
                     console.error('Error cargando posts', e);
@@ -1154,56 +1301,202 @@
                 }
             }
 
-            async function renderLeftBlog(){
+            function getThumb(post){
+                return post && (post.thumbnail || post.cover) || null;
+            }
+
+            function normalizeText(s){ return (s||'').toString().toLowerCase(); }
+
+            function buildCategories(posts){
+                const counts = new Map();
+                posts.forEach(p=>{
+                    const cat = p && p.category;
+                    const cats = Array.isArray(p && p.categories) ? p.categories : (cat ? [cat] : []);
+                    cats.forEach(c=>{
+                        if(!c) return; const key = c.toString();
+                        counts.set(key, (counts.get(key)||0)+1);
+                    });
+                });
+                return Array.from(counts.entries()).sort((a,b)=> b[1]-a[1]);
+            }
+
+            function buildTags(posts){
+                const counts = new Map();
+                posts.forEach(p=>{
+                    const tags = Array.isArray(p && p.tags) ? p.tags : (p && p.tag ? [p.tag] : []);
+                    tags.forEach(t=>{ if(!t) return; const key = t.toString(); counts.set(key, (counts.get(key)||0)+1); });
+                });
+                return Array.from(counts.entries()).sort((a,b)=> b[1]-a[1]).slice(0,30);
+            }
+
+            function renderRecent(list){
                 const root = document.getElementById('leftBlogEntries');
                 if(!root) return;
                 root.innerHTML = '';
-                const posts = await loadPosts();
-                posts.slice().sort((a,b)=> new Date(b.date) - new Date(a.date)).forEach(post=>{
-                    const el = document.createElement('div');
-                    el.className = 'entry';
+                if(!list.length){
+                    const empty = document.createElement('div');
+                    empty.className='post-item';
+                    const thumb = document.createElement('div'); thumb.className='post-thumb'; thumb.textContent = compactDate(new Date());
+                    empty.appendChild(thumb);
+                    root.appendChild(empty);
+                    return;
+                }
+                list.slice(0,8).forEach(post=>{
+                    const item = document.createElement('div');
+                    item.className = 'post-item';
+                    item.setAttribute('role','button');
+                    item.title = post.title || 'Open post';
 
-                    const date = document.createElement('div');
-                    date.className = 'date';
-                    date.textContent = formatDate(post.date || new Date());
+                    const thumb = document.createElement('div');
+                    thumb.className = 'post-thumb';
+                    const imgUrl = getThumb(post);
+                    if(imgUrl){
+                        const img = document.createElement('img');
+                        img.src = imgUrl; img.alt = post.title || 'thumb';
+                        thumb.appendChild(img);
+                    } else {
+                        thumb.textContent = compactDate(post.date || new Date());
+                    }
 
-                    const title = document.createElement('div');
-                    title.className = 'title';
-                    title.textContent = post.title || 'Sin título';
+                    const info = document.createElement('div');
+                    const title = document.createElement('div'); title.className = 'post-title'; title.textContent = post.title || 'Untitled';
+                    const meta = document.createElement('div'); meta.className = 'post-meta'; meta.textContent = formatDate(post.date || new Date());
+                    const snip = document.createElement('div'); snip.className = 'post-snippet'; snip.textContent = (post.content || '').toString().slice(0,120);
 
-                    const snippet = document.createElement('div');
-                    snippet.className = 'snippet';
-                    snippet.textContent = post.content || '';
+                    info.appendChild(title); info.appendChild(meta); info.appendChild(snip);
+                    item.appendChild(thumb); item.appendChild(info);
 
-                    // Open post in new tab (to blog/post.html?id=...)
-                    el.addEventListener('click', ()=>{
+                    item.addEventListener('click', ()=>{
                         if(post.id){
-                            window.open('blog/post.html?id=' + encodeURIComponent(post.id), '_blank');
+                            const target = item.querySelector('.post-thumb') || item;
+                            // Prevent multiple triggers
+                            item.style.pointerEvents = 'none';
+                            target.classList.add('tap-bounce');
+                            setTimeout(()=>{
+                                window.location.href = 'blog/post.html?id=' + encodeURIComponent(post.id);
+                            }, 420);
                         } else {
-                            alert('Esta entrada no tiene id definida. Edita blog/posts.json.');
+                            alert('This entry has no defined id. Edit blog/posts.json.');
                         }
                     });
 
-                    el.appendChild(date);
-                    el.appendChild(title);
-                    el.appendChild(snippet);
+                    root.appendChild(item);
+                });
+            }
 
-                    // Optional attachment link (kept inline)
-                    if(post.attachment && post.attachment.data){
-                        const a = document.createElement('a');
-                        a.href = post.attachment.data;
-                        a.textContent = post.attachment.name || 'Adjunto';
-                        a.style.display = 'block';
-                        a.style.marginTop = '0.5rem';
-                        a.className = 'pm-btn';
-                        el.appendChild(a);
-                    }
-
+            function renderPopular(posts){
+                const popularWrap = document.getElementById('popularWidget');
+                const root = document.getElementById('sidebarPopular');
+                if(!popularWrap || !root) return;
+                const withViews = posts.filter(p=> typeof p.views === 'number' && p.views > 0);
+                if(withViews.length === 0){ popularWrap.hidden = true; return; }
+                popularWrap.hidden = false; root.innerHTML = '';
+                withViews.sort((a,b)=> b.views - a.views).slice(0,5).forEach(p=>{
+                    const el = document.createElement('div'); el.className = 'post-item';
+                    const dateInThumb = !getThumb(p) ? `<div class="post-thumb">${compactDate(p.date||new Date())}</div>` : `<div class="post-thumb"><img src="${getThumb(p)}" alt="${p.title||'thumb'}"></div>`;
+                    el.innerHTML = `
+                        ${dateInThumb}
+                        <div>
+                            <div class="post-title">${p.title||'Untitled'}</div>
+                            <div class="post-meta">${formatDate(p.date)} · ${p.views} views</div>
+                        </div>`;
+                    el.addEventListener('click', ()=>{ 
+                        if(p.id){
+                            const target = el.querySelector('.post-thumb') || el;
+                            el.style.pointerEvents = 'none';
+                            target.classList.add('tap-bounce');
+                            setTimeout(()=>{
+                                window.location.href = 'blog/post.html?id=' + encodeURIComponent(p.id);
+                            }, 420);
+                        }
+                    });
                     root.appendChild(el);
                 });
             }
 
-            document.addEventListener('DOMContentLoaded', renderLeftBlog);
+            function renderCategories(posts){
+                const wrap = document.getElementById('categoriesWidget');
+                const ul = document.getElementById('sidebarCategories');
+                if(!wrap || !ul) return;
+                const cats = buildCategories(posts);
+                if(!cats.length){ wrap.hidden = true; return; }
+                wrap.hidden = false; ul.innerHTML = '';
+                cats.forEach(([name,count])=>{
+                    const li = document.createElement('li'); li.className = 'cat-item';
+                    const span = document.createElement('span'); span.className = 'cat-name'; span.textContent = name;
+                    const badge = document.createElement('span'); badge.className = 'badge'; badge.textContent = count;
+                    li.appendChild(span); li.appendChild(badge);
+                    li.addEventListener('click', ()=>{ state.activeFilter = name; state.activeTag = null; applyFilters(); });
+                    ul.appendChild(li);
+                });
+            }
+
+            function renderTags(posts){
+                const wrap = document.getElementById('tagsWidget');
+                const root = document.getElementById('sidebarTags');
+                if(!wrap || !root) return;
+                const tags = buildTags(posts);
+                if(!tags.length){ wrap.hidden = true; return; }
+                wrap.hidden = false; root.innerHTML = '';
+                tags.slice(0,25).forEach(([name,count])=>{
+                    const el = document.createElement('span'); el.className = 'tag'; el.textContent = `#${name}`; el.title = `${count} post(s)`;
+                    el.addEventListener('click', ()=>{ state.activeTag = name; state.activeFilter = null; applyFilters(); });
+                    root.appendChild(el);
+                });
+            }
+
+            function applyFilters(){
+                const q = normalizeText(state.search);
+                let list = [...state.posts];
+                if(q){ list = list.filter(p => normalizeText(p.title).includes(q) || normalizeText(p.content).includes(q)); }
+                if(state.activeFilter){
+                    list = list.filter(p=>{
+                        const arr = Array.isArray(p.categories) ? p.categories : (p.category ? [p.category] : []);
+                        return arr.map(x=>x && x.toString()).includes(state.activeFilter);
+                    });
+                }
+                if(state.activeTag){
+                    const tagIn = (p)=>{
+                        const arr = Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []);
+                        return arr.map(x=>x && x.toString()).includes(state.activeTag);
+                    };
+                    list = list.filter(tagIn);
+                }
+                state.filtered = list.sort((a,b)=> new Date(b.date) - new Date(a.date));
+                renderRecent(state.filtered);
+            }
+
+            function setupSearch(){
+                const input = document.getElementById('blogSearch');
+                if(!input) return; let t;
+                input.addEventListener('input', ()=>{ clearTimeout(t); t = setTimeout(()=>{ state.search = input.value || ''; applyFilters(); }, 180); });
+            }
+
+            function setupNewsletter(){}
+
+            function showSkeleton(){
+                const root = document.getElementById('leftBlogEntries');
+                if(!root) return; root.innerHTML = '';
+                for(let i=0;i<4;i++){
+                    const sk = document.createElement('div'); sk.className='post-item';
+                    sk.innerHTML = `<div class="post-thumb"></div><div><div class="post-title" style="opacity:.6">Loading…</div><div class="post-meta" style="opacity:.4">···</div></div>`;
+                    root.appendChild(sk);
+                }
+            }
+
+            async function init(){
+                showSkeleton();
+                setupSearch();
+                const posts = await loadPosts();
+                state.posts = Array.isArray(posts) ? posts : [];
+                state.filtered = [...state.posts];
+                renderCategories(state.posts);
+                renderTags(state.posts);
+                renderPopular(state.posts);
+                applyFilters();
+            }
+
+            document.addEventListener('DOMContentLoaded', init);
         })();
     </script>
 
@@ -1291,5 +1584,4 @@
 
         // Profile menu handled by CSS (hover/focus). Logo and "View profile" open GitHub.
 
-       
         
